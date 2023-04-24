@@ -1,0 +1,51 @@
+[build-system]
+requires = ['poetry-core~=1.0']
+build-backend = 'poetry.core.masonry.api'
+
+[tool.flake8]
+max-line-length = 88
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310']
+
+[tool.isort]
+line_length = 88
+known_third_party = "pytest,setuptools,sparp"
+multi_line_output = 3
+
+[tool.poetry]
+name = "pbx"
+version = "1.0.0"
+description = "PBX - CLI Tool for interacting with Paperbox APIs"
+authors = ["Paperbox.ai"]
+license = "Apache-2.0"
+homepage = "https://github.com/paperboxai/pbx-cli"
+repository = "https://github.com/paperboxai/pbx-cli.git"
+
+[tool.poetry.dependencies]
+python = ">=3.6"
+clickclick = ">=1.2,<21"
+jsonschema = ">=2.5.1,<5"
+PyYAML = ">=5.1,<7"
+packaging = ">=20"
+jinja2 = "<=3.1.2"
+google-auth = ">=2.17,<2.18"
+decorator = { version = ">=5,<6", optional = true }
+pytest = { version = ">=6,<7", optional = true }
+pytest-cov = { version = ">=2,<3", optional = true }
+testfixtures = { version = ">=6,<7", optional = true }
+pytest-aiohttp = { version = ">=0.3", optional = true }
+sphinx-autoapi = { version = "1.8.1", optional = true }
+
+[tool.poetry.extras]
+tests = ["decorator", "pytest", "pytest-cov", "testfixtures", "pytest-aiohttp"]
+docs = ["sphinx-autoapi"]
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.0"
+pytest-cov = "^2.0"
+pytest-aiohttp = "^0.3"
+
+[tool.poetry.scripts]
+pbx = "pbx.cli:main"
