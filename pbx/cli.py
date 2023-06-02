@@ -41,11 +41,11 @@ def main():
     pass
 
 
-@main.group(cls=GroupWithCommandOptions, help="TBD")
+@main.group(cls=GroupWithCommandOptions, help="All commands related to documents within Paperbox.")
 @click.option(
     "--inbox-id",
     cls=MutuallyExclusiveOption,
-    help="TBD",
+    help="Inbox ID where the document is going to or resides in.",
     required=False,
     default=None,
     mutually_exclusive=["router_id"],
@@ -53,7 +53,7 @@ def main():
 @click.option(
     "--router-id",
     cls=MutuallyExclusiveOption,
-    help="TBD",
+    help="Router ID where the document is going to or resides in.",
     required=False,
     default=None,
     mutually_exclusive=["inbox_id"],
@@ -155,7 +155,7 @@ def _find_files(root: str, pattern: str, recursive=True):
     return matches
 
 
-@documents.command(help="TBD")
+@documents.command(help="Upload a document to PBX.")
 @click.argument("document-path")
 @click.option("--tag-type-id", default=None, required=False)
 @click.option("--document-class", default=None, required=False)
